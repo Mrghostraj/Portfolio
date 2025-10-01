@@ -212,24 +212,21 @@
                 }
 
                 // Render projects dynamically
-                projectData.forEach(async (project) => {
-                    // const imageUrl = "image1.jpeg";
-
+                projectData.forEach((project) => {
                     const card = document.createElement("div");
-                    card.className = "card p-6 rounded-lg shadow-xl";
-
+                    card.className = "card p-6 rounded-lg shadow-xl cursor-pointer";
+                    card.onclick = () => window.open(project.url, "_blank");
                     card.innerHTML = `
-            <img src=${project.imageURL} alt="${project.title}" 
-                 class="w-full h-48 object-cover rounded-lg mb-4">
-            <h3 class="text-2xl font-bold text-green-400 mb-2">${project.title}</h3>
-            <p class="text-gray-400 mb-4 text-sm leading-relaxed">${project.description}</p>
-            <div class="flex flex-wrap gap-2 text-xs font-semibold">
-                ${project.skills.map(skill =>
-                        `<span class="bg-gray-700 text-gray-200 px-3 py-1 rounded-full">${skill}</span>`
-                    ).join("")}
-            </div>
-        `;
-
+                         <img src="${project.imageURL}" alt="${project.title}" 
+                              class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-2xl font-bold text-green-400 mb-2">${project.title}</h3>
+                    <p class="text-gray-400 mb-4 text-sm leading-relaxed">${project.description}</p>
+                    <div class="flex flex-wrap gap-2 text-xs font-semibold">
+                              ${project.skills.map(skill =>
+                                  `<span class="bg-gray-700 text-gray-200 px-3 py-1 rounded-full">${skill}</span>`
+                                                  ).join("")}
+                          </div>
+                          `;
                     projectGrid.appendChild(card);
                 });
             });
@@ -587,4 +584,5 @@
 
 
 </html>
+
 
